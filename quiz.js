@@ -134,7 +134,7 @@ const typeQuestions = [
         ]
     },
     {
-        question: "Soon, you will join the world of Pokémon. If you could bring one thing from your former life, what would it be?",
+        question: "If you could bring one thing from your current life into the world of Pokemon, what would it be?",
         options: [
             { text: "Entertainment, like a good book", typeWeight: { Bug: 3, Electric: 2, Normal: 1 } },
             { text: "Something practical, like a compass", typeWeight: { Ground: 3, Rock: 2, Normal: 1 } },
