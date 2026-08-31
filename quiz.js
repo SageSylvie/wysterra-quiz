@@ -473,7 +473,7 @@ function showResultsPage(pokemon) {
         Anima Affinity: ${mainType}
     `;
 
-    textElement.innerText = "Your result has been recorded! Please save a screenshot of your result.";
+    textElement.innerText = "Your result has been recorded!";
 
     const resultBox = document.createElement("div");
     resultBox.className = "result-box";
@@ -482,7 +482,7 @@ function showResultsPage(pokemon) {
     optionsContainer.appendChild(resultBox);
 
     const copyBtn = document.createElement("button");
-    copyBtn.innerText = "Copy Result";
+    copyBtn.innerText = "Copy Results";
     copyBtn.onclick = () => copyToClipboard(summary, copyBtn);
     optionsContainer.appendChild(copyBtn);
 	
@@ -666,7 +666,7 @@ function updateDebugPanel() {
     debugPanel.innerText = output;
 }
 
-// This is stuff on load in.
+// Goomy
 
 let goomyClickCount = 0;
 let goomyClickTimer = null;
@@ -746,6 +746,8 @@ function setTesterControlsVisible(visible) {
     }
 }
 
+// This is stuff on load in.
+
 window.onload = () => {
     bgm.play().catch(() => console.log("Autoplay blocked. Music will start on next click."));
     document.body.addEventListener('click', () => {
@@ -780,4 +782,5 @@ window.onload = () => {
         renderIntro();
     }
 };
+ 
  
