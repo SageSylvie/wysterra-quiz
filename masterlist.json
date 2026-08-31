@@ -76,6 +76,12 @@
       "hidden_ability": "Drought"
     },
     {
+      "name": "Alolan Vulpix",
+      "type": ["Ice"],
+      "ability": ["Snow Cloak"],
+      "hidden_ability": "Snow Warning"
+    },
+    {
       "name": "Zubat",
       "type": ["Poison", "Flying"],
       "ability": ["Inner Focus"],
@@ -410,6 +416,18 @@
       "type": ["Normal"],
       "ability": ["Limber"],
       "hidden_ability": "Imposter"
+    },
+    {
+      "name": "Eevee",
+      "type": ["Normal"],
+      "ability": ["Run Away", "Adaptability"],
+      "hidden_ability": "Anticipation"
+    },
+    {
+      "name": "Eevee",
+      "type": ["Normal"],
+      "ability": ["Run Away", "Adaptability"],
+      "hidden_ability": "Anticipation"
     },
     {
       "name": "Eevee",
@@ -2066,6 +2084,84 @@
       "type": ["Grass", "Ghost"],
       "ability": ["Hospitality"],
       "hidden_ability": "Heatproof"
+    },
+    {
+      "name": "Igglybuff",
+      "type": ["Normal", "Fairy"],
+      "ability": ["Cute Charm", "Competitive"],
+      "hidden_ability": "Friend Guard"
+    },
+    {
+      "name": "Galarian Ponyta",
+      "type": ["Psychic"],
+      "ability": ["Run Away", "Pastel Veil"],
+      "hidden_ability": "Anticipation"
+    },
+    {
+      "name": "Mime Jr.",
+      "type": ["Psychic", "Fairy"],
+      "ability": ["Soundproof", "Filter"],
+      "hidden_ability": "Technician"
+    },
+    {
+      "name": "Azurill",
+      "type": ["Normal", "Fairy"],
+      "ability": ["Thick Fat", "Huge Power"],
+      "hidden_ability": "Sap Sipper"
+    },
+    {
+      "name": "Ralts",
+      "type": ["Psychic", "Fairy"],
+      "ability": ["Synchronize", "Trace"],
+      "hidden_ability": "Telepathy"
+    },
+    {
+      "name": "Cottonee",
+      "type": ["Grass", "Fairy"],
+      "ability": ["Prankster", "Infiltrator"],
+      "hidden_ability": "Chlorophyll"
+    },
+    {
+      "name": "Dedenne",
+      "type": ["Electric", "Fairy"],
+      "ability": ["Cheek Pouch", "Pickup"],
+      "hidden_ability": "Plus"
+    },
+    {
+      "name": "Carbink",
+      "type": ["Rock", "Fairy"],
+      "ability": ["Clear Body"],
+      "hidden_ability": "Sturdy"
+    },
+    {
+      "name": "Popplio",
+      "type": ["Water"],
+      "ability": ["Torrent"],
+      "hidden_ability": "Liquid Voice"
+    },
+    {
+      "name": "Morelull",
+      "type": ["Grass", "Fairy"],
+      "ability": ["Illuminate", "Effect Spore"],
+      "hidden_ability": "Rain Dish"
+    },
+    {
+      "name": "Mimikyu",
+      "type": ["Ghost", "Fairy"],
+      "ability": ["Disguise"],
+      "hidden_ability": null
+    },
+    {
+      "name": "Hatenna",
+      "type": ["Psychic"],
+      "ability": ["Healer", "Anticipation"],
+      "hidden_ability": "Magic Bounce"
+    },
+    {
+      "name": "Impidimp",
+      "type": ["Dark", "Fairy"],
+      "ability": ["Prankster", "Frisk"],
+      "hidden_ability": "Pickpocket"
     }
   ]
 }
