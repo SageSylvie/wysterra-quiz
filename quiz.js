@@ -391,7 +391,7 @@ function showAlternatives() {
     const optionsContainer = document.getElementById("options-container");
 
     optionsContainer.innerHTML = "";
-    typeWriter("Here are a few other Pokémon that might fit you better:", () => {
+    typeWriter("Other Pokémon that may suit you better:", () => {
         alternatePokemons
             .filter(alt => alt.name !== currentPokemon.name)
             .forEach(alt => {
