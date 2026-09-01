@@ -482,7 +482,7 @@ function showResultsPage(pokemon) {
     optionsContainer.appendChild(resultBox);
 
     const copyBtn = document.createElement("button");
-    copyBtn.innerText = "Copy Result";
+    copyBtn.innerText = "Copy Text Result";
     copyBtn.onclick = () => copyToClipboard(summary, copyBtn);
     optionsContainer.appendChild(copyBtn);
 	
