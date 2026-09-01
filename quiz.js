@@ -473,7 +473,7 @@ function showResultsPage(pokemon) {
         Anima Affinity: ${mainType}
     `;
 
-    textElement.innerText = "Your result has been recorded!";
+    textElement.innerText = "Your result has been recorded! Please save a screenshot for later.";
 
     const resultBox = document.createElement("div");
     resultBox.className = "result-box";
@@ -482,7 +482,7 @@ function showResultsPage(pokemon) {
     optionsContainer.appendChild(resultBox);
 
     const copyBtn = document.createElement("button");
-    copyBtn.innerText = "Copy Results";
+    copyBtn.innerText = "Copy Result";
     copyBtn.onclick = () => copyToClipboard(summary, copyBtn);
     optionsContainer.appendChild(copyBtn);
 	
