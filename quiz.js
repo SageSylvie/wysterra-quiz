@@ -23,7 +23,7 @@ const LARVITAR = {
 
 // Set link. Since Discord invite links expire, this will need to be updates.
 
-const DISCORD_URL = "https://discord.gg/mzwkwDdkW";
+// const DISCORD_URL = "https://discord.gg/mzwkwDdkW";
 
 // Change this if you want different music.
 
@@ -486,13 +486,13 @@ function showResultsPage(pokemon) {
     copyBtn.onclick = () => copyToClipboard(summary, copyBtn);
     optionsContainer.appendChild(copyBtn);
 	
-	const discordBtn = document.createElement("button");
-    discordBtn.innerText = "Join the Discord";
-    discordBtn.className = "discord-button";
-    discordBtn.onclick = () => {
-        window.open(DISCORD_URL, "_blank");
-    };
-    optionsContainer.appendChild(discordBtn);
+	// const discordBtn = document.createElement("button");
+    // discordBtn.innerText = "Join the Discord";
+    // discordBtn.className = "discord-button";
+    // discordBtn.onclick = () => {
+        // window.open(DISCORD_URL, "_blank");
+    // };
+    // optionsContainer.appendChild(discordBtn);
 }
 
 // Results lock in when someone finishes the quiz, not when they pick a Pokemon.
