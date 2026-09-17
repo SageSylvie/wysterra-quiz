@@ -19,9 +19,35 @@ const LARVITAR = {
     type: ["Rock", "Ground"],
     ability: ["Guts"],
     hidden_ability: "Sand Veil"
+//  weight: 1.0 (The higher the number, the more likely. Everything that doesn't have weight defined (like Larvitar right now since this is a comment) will automatically be set to the default, 1.0)
 };
 
-// Set link. Since Discord invite links expire, this will need to be updates.
+// Fairy pool
+
+const FAIRY_POOL = [
+    "Alolan Vulpix",
+    "Azurill",
+    "Carbink",
+    "Cottonee",
+    "Dedenne",
+    "Eevee",
+    "Galarian Ponyta",
+    "Hatenna",
+    "Igglybuff",
+    "Impidimp",
+    "Koffing",
+    "Mime Jr.",
+    "Mimikyu",
+    "Morelull",
+    "Popplio",
+    "Ralts"
+];
+ 
+function isFairy(name) {
+    return FAIRY_POOL.includes(name);
+}
+
+// Set link. Since Discord invite links expire, this will need to be updated.
 
 // const DISCORD_URL = "https://discord.gg/mzwkwDdkW";
 
@@ -310,6 +336,44 @@ function getMainPool(excludeNames = []) {
     }
     return pool;
 }
+
+function getMainAltPool(excludeNames = []) {
+    return getMainPool(excludeNames).filter(p => !isFairy(p.name));
+}
+ 
+function getSecondAltPool(type, excludeNames = []) {
+    return getPokemonByType(type, excludeNames).filter(p => !isFairy(p.name));
+}
+
+function getRandomWeighted(pool) {
+    if (!pool.length) return null;
+    
+    const totalWeight = pool.reduce((sum, p) => sum + (p.weight ?? 1), 0);
+    let random = Math.random() * totalWeight;
+
+    for (const p of pool) {
+        const weight = p.weight ?? 1;
+        if (random < weight) return p;
+        random -= weight;
+    }
+    return pool[pool.length - 1];
+}
+
+function pickWeightedUnique(pool, count) {
+    const tempPool = [...pool];
+    const selected = [];
+
+    while (selected.length < count && tempPool.length > 0) {
+        const picked = getRandomWeighted(tempPool);
+        if (!picked) break;
+        
+        selected.push(picked);
+        const index = tempPool.findIndex(p => p.name === picked.name);
+        if (index !== -1) tempPool.splice(index, 1);
+    }
+
+    return selected;
+}
  
 function generateResultSet() {
     const mainPool = getMainPool();
@@ -319,7 +383,7 @@ function generateResultSet() {
         return;
     }
 
-const primaryChosen = mainPool[Math.floor(Math.random() * mainPool.length)];
+const primaryChosen = getRandomWeighted(mainPool);
     primaryPokemon = {
         name: primaryChosen.name,
         type: primaryChosen.type,
@@ -330,8 +394,8 @@ const primaryChosen = mainPool[Math.floor(Math.random() * mainPool.length)];
 const isTie = firstPlaceTypes.length > 1;
     const mainAltCount = isTie ? 3 : 4;
     const secondAltCount = isTie ? 3 : 2;
-    const mainAltPool = getMainPool(usedNames);
-    const mainAltPicks = pickRandomUnique(mainAltPool, mainAltCount);
+    const mainAltPool = getMainAltPool(usedNames);
+    const mainAltPicks = pickWeightedUnique(mainAltPool, mainAltCount);
     usedNames.push(...mainAltPicks.map(p => p.name));
 
     let secondAltPicks = [];
@@ -344,8 +408,8 @@ const isTie = firstPlaceTypes.length > 1;
         orderedTypes.forEach((t, idx) => {
             const count = perType + (idx < remainder ? 1 : 0);
             if (count > 0) {
-                const pool = getPokemonByType(t, usedNames);
-                const picks = pickRandomUnique(pool, count);
+                const pool = getSecondAltPool(t, usedNames);
+                const picks = pickWeightedUnique(pool, count);
                 secondAltPicks.push(...picks);
                 usedNames.push(...picks.map(p => p.name));
             }
@@ -782,5 +846,3 @@ window.onload = () => {
         renderIntro();
     }
 };
- 
- 
