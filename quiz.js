@@ -11,7 +11,6 @@ let firstPlaceTypes = [];
 
 let primaryPokemon = null;
 let alternatePokemons = [];
-let alternativesShown = false;
 
 // Larvitar doesn't need to be in the other file tbh.
 
@@ -453,9 +452,6 @@ function displayFinalReveal(pokemon) {
 // Six alternatives: Four from the main type, two from second place.
 
 function showAlternatives() {
-    alternativesShown = true;
-    saveQuizState(false); 
-
     const optionsContainer = document.getElementById("options-container");
 
     optionsContainer.innerHTML = "";
@@ -530,9 +526,10 @@ function showResultsPage(pokemon) {
     const textElement = document.getElementById("quiz-text");
     const optionsContainer = document.getElementById("options-container");
     optionsContainer.innerHTML = "";
-    const isOriginal = primaryPokemon && pokemon.name === primaryPokemon.name && !alternativesShown;
+ 
+    const isOriginal = primaryPokemon && pokemon.name === primaryPokemon.name;
     const soulShapeName = pokemon.name + (isOriginal ? "*" : "");
-
+ 
     const summary = `
         [Quiz Result]
         Soul Shape: ${soulShapeName}
@@ -552,7 +549,6 @@ function showResultsPage(pokemon) {
     copyBtn.innerText = "Copy Text Result";
     copyBtn.onclick = () => copyToClipboard(summary, copyBtn);
     optionsContainer.appendChild(copyBtn);
-}
 	
 	// const discordBtn = document.createElement("button");
     // discordBtn.innerText = "Join the Discord";
@@ -569,13 +565,12 @@ function saveQuizState(accepted) {
     const state = {
         mainType: mainType,
         secondTypes: secondTypes,
-        firstPlaceTypes: firstPlaceTypes,
+        firstPlaceTypes: firstPlaceTypes, // Save it
         typeScores: typeScores,
         primary: primaryPokemon,
         alternates: alternatePokemons,
         current: currentPokemon,
-        accepted: accepted,
-        alternativesShown: alternativesShown
+        accepted: accepted
     };
     localStorage.setItem("quiz_state", JSON.stringify(state));
 }
@@ -831,18 +826,17 @@ window.onload = () => {
  
     const saved = loadQuizState();
  
-if (saved) {
+    if (saved) {
         mainType = saved.mainType;
         secondTypes = saved.secondTypes;
-        firstPlaceTypes = saved.firstPlaceTypes || [];
+		firstPlaceTypes = saved.firstPlaceTypes || [];
         if (saved.typeScores) typeScores = saved.typeScores;
         primaryPokemon = saved.primary;
         alternatePokemons = saved.alternates;
         currentPokemon = saved.current;
-        alternativesShown = saved.alternativesShown || false; // <-- Restore flag
-
+ 
         updateDebugPanel();
-
+ 
         if (saved.accepted) {
             showResultsPage(currentPokemon);
         } else {
